@@ -1,0 +1,2 @@
+head $1 | grep -v "#" | head -1 | tr '\011' '\012' | cat -n -
+

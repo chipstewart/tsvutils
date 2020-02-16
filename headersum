@@ -1,0 +1,15 @@
+headers $1 > /tmp/header.list.txt
+n="$(wc -l /tmp/header.list.txt | cut -f1 -d'/' | sed 's/ //')"
+echo "$n fields"  
+c=1
+#for c in {1..10}; do 
+while [[ $c -le $n ]]
+do
+    v="$(head -$c /tmp/header.list.txt | tail -1 )"
+    #echo $v
+    #echo "$(cat $1 | cut -f$c | wc -c)"
+    s="$(cat $1 | cut -f$c | wc -c)"
+    echo $s "	" $v
+    let c=c+1
+done
+
